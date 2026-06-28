@@ -16,578 +16,943 @@
 </head>
 <body>
 
-    <!-- Main App Container -->
-    <div class="app-container">
-        <!-- PHONE APP CONTENT -->
-        <div class="phone-app-content">
+    <!-- Platform Preview Mode Switcher -->
+    <div class="platform-switcher">
+        <button class="switch-tab active" data-mode="client">
+            <i class="fa-solid fa-mobile-screen-button"></i>
+            <span>Người đặt sân (Khách)</span>
+        </button>
+        <button class="switch-tab" data-mode="admin">
+            <i class="fa-solid fa-desktop"></i>
+            <span>Chủ sân (Quản lý)</span>
+        </button>
+    </div>
 
-                    <!-- SCREEN 1: HOME (TRANG CHỦ) -->
-                    <section class="app-screen active" id="screen-home">
-                        <header class="app-header">
-                            <div class="header-location">
-                                <span class="loc-label">Vị trí của bạn</span>
-                                <div class="loc-value">
-                                    <i class="fa-solid fa-location-dot"></i>
-                                    <span>Quận 1, TP. HCM</span>
-                                    <i class="fa-solid fa-chevron-down"></i>
-                                </div>
-                            </div>
-                            <button class="header-icon-btn" aria-label="Notifications">
-                                <i class="fa-regular fa-bell"></i>
-                                <span class="badge-dot"></span>
-                            </button>
-                        </header>
+    <!-- 1. Client View Wrapper (Mobile Client App Preview) -->
+    <div class="client-view-wrapper active">
+        <!-- Main App Container -->
+        <div class="app-container">
 
-                        <div class="screen-scrollable">
-                            <!-- Search Bar Mock -->
-                            <div class="home-search-mock" id="home-search-trigger">
-                                <i class="fa-solid fa-magnifying-glass"></i>
-                                <span>Tìm kiếm sân hoặc khu vực...</span>
-                                <button class="filter-btn-mock" aria-label="Filters"><i class="fa-solid fa-sliders"></i></button>
-                            </div>
+            <!-- PHONE APP CONTENT -->
+            <div class="phone-app-content">
 
-                            <!-- Promo Banner -->
-                            <div class="promo-banner">
-                                <div class="promo-text">
-                                    <span class="promo-tag">ƯU ĐÃI THÀNH VIÊN MỚI</span>
-                                    <h2>Giảm 20% Cho Lượt Đặt Đầu Tiên</h2>
-                                    <p>Nhập mã: <strong class="promo-code">KINETIC20</strong></p>
-                                </div>
-                                <div class="promo-badge"><i class="fa-solid fa-ticket"></i></div>
-                            </div>
-
-                            <!-- Categories -->
-                            <div class="categories-section">
-                                <h3 class="section-title">Môn thể thao</h3>
-                                <div class="categories-list">
-                                    <button class="category-chip active" data-sport="pickleball">
-                                        <i class="fa-solid fa-table-tennis-paddle-ball"></i>
-                                        <span>Pickleball</span>
-                                    </button>
-                                    <button class="category-chip" data-sport="badminton">
-                                        <i class="fa-solid fa-shuttlecock"></i>
-                                        <span>Cầu lông</span>
-                                    </button>
-                                    <button class="category-chip" data-sport="tennis">
-                                        <i class="fa-solid fa-baseball-bat-ball"></i>
-                                        <span>Tennis</span>
-                                    </button>
-                                    <button class="category-chip" data-sport="basketball">
-                                        <i class="fa-solid fa-basketball"></i>
-                                        <span>Bóng rổ</span>
-                                    </button>
-                                </div>
-                            </div>
-
-                            <!-- Featured Courts -->
-                            <div class="featured-section">
-                                <div class="section-header">
-                                    <h3 class="section-title">Sân nổi bật gần bạn</h3>
-                                    <a href="#" class="view-all-link" id="home-view-all">Xem tất cả</a>
-                                </div>
-                                
-                                <div class="courts-list" id="featured-courts-container">
-                                    <!-- Featured Court 1 -->
-                                    <div class="court-card" data-court-id="1">
-                                        <div class="court-img-wrapper">
-                                            <img src="assets/images/pickleball-1.png" alt="Kinetic Arena">
-                                            <span class="court-badge">Pickleball</span>
-                                            <button class="fav-btn" aria-label="Favorite"><i class="fa-regular fa-heart"></i></button>
-                                        </div>
-                                        <div class="court-details">
-                                            <div class="court-header">
-                                                <h4 class="court-name">Kinetic Arena Q.1</h4>
-                                                <span class="court-rating"><i class="fa-solid fa-star"></i> 4.9</span>
-                                            </div>
-                                            <p class="court-specs"><i class="fa-solid fa-house"></i> Trong nhà | Sân cao cấp</p>
-                                            <div class="court-footer">
-                                                <div class="court-price">150.000đ <span>/ giờ</span></div>
-                                                <button class="btn-book-now">Đặt ngay</button>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Featured Court 2 -->
-                                    <div class="court-card" data-court-id="2">
-                                        <div class="court-img-wrapper">
-                                            <img src="assets/images/badminton-1.png" alt="Sân cầu lông">
-                                            <span class="court-badge">Cầu lông</span>
-                                            <button class="fav-btn" aria-label="Favorite"><i class="fa-regular fa-heart"></i></button>
-                                        </div>
-                                        <div class="court-details">
-                                            <div class="court-header">
-                                                <h4 class="court-name">Sân Cầu Lông Đa Năng</h4>
-                                                <span class="court-rating"><i class="fa-solid fa-star"></i> 4.9</span>
-                                            </div>
-                                            <p class="court-specs"><i class="fa-solid fa-wind"></i> Có máy lạnh | Sân thảm gỗ</p>
-                                            <div class="court-footer">
-                                                <div class="court-price">180.000đ <span>/ giờ</span></div>
-                                                <button class="btn-book-now">Đặt ngay</button>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Featured Court 3 -->
-                                    <div class="court-card" data-court-id="3">
-                                        <div class="court-img-wrapper">
-                                            <img src="assets/images/tennis-1.png" alt="Tennis court">
-                                            <span class="court-badge">Tennis</span>
-                                            <button class="fav-btn" aria-label="Favorite"><i class="fa-regular fa-heart"></i></button>
-                                        </div>
-                                        <div class="court-details">
-                                            <div class="court-header">
-                                                <h4 class="court-name">Pro Court Tennis Hub</h4>
-                                                <span class="court-rating"><i class="fa-solid fa-star"></i> 4.8</span>
-                                            </div>
-                                            <p class="court-specs"><i class="fa-solid fa-cloud-sun"></i> Ngoài trời | Có đèn chiếu sáng</p>
-                                            <div class="court-footer">
-                                                <div class="court-price">220.000đ <span>/ giờ</span></div>
-                                                <button class="btn-book-now">Đặt ngay</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Partner Invite -->
-                            <div class="partner-invite">
-                                <div class="invite-content">
-                                    <h4>Bạn là chủ sân?</h4>
-                                    <p>Hợp tác cùng Kinetic Court để tiếp cận hàng ngàn khách hàng tiềm năng mỗi ngày.</p>
-                                </div>
-                                <button class="btn-partner">Đăng ký ngay</button>
+                <!-- SCREEN 1: HOME (TRANG CHỦ) -->
+                <section class="app-screen active" id="screen-home">
+                    <header class="app-header">
+                        <div class="header-location">
+                            <span class="loc-label">Vị trí của bạn</span>
+                            <div class="loc-value">
+                                <i class="fa-solid fa-location-dot"></i>
+                                <span>Quận 1, TP. HCM</span>
+                                <i class="fa-solid fa-chevron-down"></i>
                             </div>
                         </div>
-                    </section>
+                        <button class="header-icon-btn" aria-label="Notifications">
+                            <i class="fa-regular fa-bell"></i>
+                            <span class="badge-dot"></span>
+                        </button>
+                    </header>
 
-                    <!-- SCREEN 2: SEARCH (TÌM KIẾM) -->
-                    <section class="app-screen" id="screen-search">
-                        <header class="app-header">
-                            <h2 class="app-title">KINETIC COURT</h2>
-                            <button class="header-icon-btn" aria-label="Notifications">
-                                <i class="fa-regular fa-bell"></i>
-                            </button>
-                        </header>
-
-                        <div class="screen-scrollable">
-                            <!-- Active Search Input -->
-                            <div class="search-bar-container">
-                                <div class="search-input-wrapper">
-                                    <i class="fa-solid fa-magnifying-glass"></i>
-                                    <input type="text" value="Sân Pickleball gần đây" placeholder="Tìm kiếm sân hoặc khu vực..." class="search-input">
-                                </div>
-                                <button class="filter-btn" aria-label="Filters"><i class="fa-solid fa-sliders"></i></button>
-                            </div>
-
-                            <!-- Filter Chips Scroll -->
-                            <div class="filter-chips-container">
-                                <button class="filter-chip active">Gần nhất</button>
-                                <button class="filter-chip">Giá thấp</button>
-                                <button class="filter-chip">Có máy lạnh</button>
-                                <button class="filter-chip">Trong nhà</button>
-                            </div>
-
-                            <!-- Search Results List -->
-                            <div class="search-results">
-                                <!-- Court Result 1 -->
-                                <div class="court-result-card" data-court-id="4">
-                                    <div class="result-img-wrapper">
-                                        <img src="assets/images/court-detail-main.png" alt="Pickleball Arena Q7">
-                                        <span class="result-badge">Pickleball</span>
-                                    </div>
-                                    <div class="result-info">
-                                        <div class="result-header">
-                                            <h4 class="result-name">Pickleball Arena Q7</h4>
-                                            <span class="result-distance"><i class="fa-solid fa-person-running"></i> 1.2 km</span>
-                                        </div>
-                                        <div class="result-rating"><i class="fa-solid fa-star"></i> 4.9 (48 đánh giá)</div>
-                                        
-                                        <div class="result-tags">
-                                            <span class="tag-item"><i class="fa-solid fa-plug"></i> Có điện</span>
-                                            <span class="tag-item"><i class="fa-solid fa-car"></i> Gửi xe</span>
-                                            <span class="tag-item"><i class="fa-solid fa-wind"></i> Máy lạnh</span>
-                                        </div>
-                                        <div class="result-footer">
-                                            <div class="result-price">130.000đ <span>/ giờ</span></div>
-                                            <button class="btn-book-now">Đặt ngay</button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Court Result 2 -->
-                                <div class="court-result-card" data-court-id="5">
-                                    <div class="result-img-wrapper">
-                                        <img src="assets/images/pickleball-1.png" alt="Elite Court Phú Mỹ Hưng">
-                                        <span class="result-badge">Pickleball</span>
-                                    </div>
-                                    <div class="result-info">
-                                        <div class="result-header">
-                                            <h4 class="result-name">Elite Court Phú Mỹ Hưng</h4>
-                                            <span class="result-distance"><i class="fa-solid fa-person-running"></i> 2.6 km</span>
-                                        </div>
-                                        <div class="result-rating"><i class="fa-solid fa-star"></i> 4.7 (32 đánh giá)</div>
-                                        
-                                        <div class="result-tags">
-                                            <span class="tag-item"><i class="fa-solid fa-plug"></i> Có điện</span>
-                                            <span class="tag-item"><i class="fa-solid fa-shower"></i> Phòng tắm</span>
-                                            <span class="tag-item"><i class="fa-solid fa-sun"></i> Sân sáng</span>
-                                        </div>
-                                        <div class="result-footer">
-                                            <div class="result-price">150.000đ <span>/ giờ</span></div>
-                                            <button class="btn-book-now">Đặt ngay</button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Court Result 3 (Unavailable) -->
-                                <div class="court-result-card disabled">
-                                    <div class="result-img-wrapper">
-                                        <img src="assets/images/badminton-1.png" alt="Sân Cầu Lông & Pickleball T4">
-                                        <span class="result-badge">Cầu lông</span>
-                                    </div>
-                                    <div class="result-info">
-                                        <div class="result-header">
-                                            <h4 class="result-name">Sân Cầu Lông & PB T4</h4>
-                                            <span class="result-distance"><i class="fa-solid fa-person-running"></i> 3.1 km</span>
-                                        </div>
-                                        <div class="result-rating"><i class="fa-solid fa-star"></i> 4.5 (19 đánh giá)</div>
-                                        
-                                        <div class="result-tags">
-                                            <span class="tag-item"><i class="fa-solid fa-car"></i> Gửi xe</span>
-                                            <span class="tag-item"><i class="fa-solid fa-umbrella"></i> Có mái che</span>
-                                        </div>
-                                        <div class="result-footer">
-                                            <div class="result-price">100.000đ <span>/ giờ</span></div>
-                                            <button class="btn-book-now btn-disabled" disabled>Hết chỗ</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                    <div class="screen-scrollable">
+                        <!-- Search Bar Mock -->
+                        <div class="home-search-mock" id="home-search-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <span>Tìm kiếm sân hoặc khu vực...</span>
+                            <button class="filter-btn-mock" aria-label="Filters"><i class="fa-solid fa-sliders"></i></button>
                         </div>
-                    </section>
 
-                    <!-- SCREEN 3: DETAILS (CHI TIẾT SÂN) -->
-                    <section class="app-screen" id="screen-details">
-                        <header class="app-header detail-header">
-                            <button class="back-btn" id="details-back-btn" aria-label="Go Back">
-                                <i class="fa-solid fa-chevron-left"></i>
-                            </button>
-                            <h2 class="app-title text-center">KINETIC COURT</h2>
-                            <button class="header-icon-btn" aria-label="Share">
-                                <i class="fa-solid fa-share-nodes"></i>
-                            </button>
-                        </header>
-
-                        <div class="screen-scrollable">
-                            <!-- Court Images Cover Slider -->
-                            <div class="detail-gallery">
-                                <img src="assets/images/court-detail-main.png" alt="Pickleball Central District" id="detail-main-img">
-                                <div class="gallery-thumbs">
-                                    <img src="assets/images/court-detail-main.png" alt="Thumb 1" class="thumb active">
-                                    <img src="assets/images/pickleball-1.png" alt="Thumb 2" class="thumb">
-                                </div>
+                        <!-- Promo Banner -->
+                        <div class="promo-banner">
+                            <div class="promo-text">
+                                <span class="promo-tag">ƯU ĐÃI THÀNH VIÊN MỚI</span>
+                                <h2>Giảm 20% Cho Lượt Đặt Đầu Tiên</h2>
+                                <p>Nhập mã: <strong class="promo-code">KINETIC20</strong></p>
                             </div>
+                            <div class="promo-badge"><i class="fa-solid fa-ticket"></i></div>
+                        </div>
 
-                            <div class="detail-container">
-                                <!-- Title & Ratings -->
-                                <div class="detail-info-block">
-                                    <div class="title-row">
-                                        <h3 class="detail-court-name" id="detail-court-title">Pickleball Central District</h3>
-                                        <span class="detail-court-rating"><i class="fa-solid fa-star"></i> 4.9</span>
-                                    </div>
-                                    <p class="detail-court-address">
-                                        <i class="fa-solid fa-location-dot"></i>
-                                        <span>123 Lê Lợi, Phường Bến Thành, Quận 1, TP. HCM</span>
-                                    </p>
-                                    <button class="btn-map"><i class="fa-solid fa-map-location-dot"></i> Xem bản đồ</button>
-                                </div>
-
-                                <!-- Date Strip Selector -->
-                                <div class="booking-section">
-                                    <h4 class="booking-section-title">Chọn ngày chơi</h4>
-                                    <div class="date-strip-wrapper">
-                                        <div class="date-strip">
-                                            <div class="date-item" data-date="2026-06-22">
-                                                <span class="day-lbl">Th 2</span>
-                                                <span class="day-num">21</span>
-                                            </div>
-                                            <div class="date-item active" data-date="2026-06-23">
-                                                <span class="day-lbl">Th 3</span>
-                                                <span class="day-num">22</span>
-                                            </div>
-                                            <div class="date-item" data-date="2026-06-24">
-                                                <span class="day-lbl">Th 4</span>
-                                                <span class="day-num">23</span>
-                                            </div>
-                                            <div class="date-item" data-date="2026-06-25">
-                                                <span class="day-lbl">Th 5</span>
-                                                <span class="day-num">24</span>
-                                            </div>
-                                            <div class="date-item" data-date="2026-06-26">
-                                                <span class="day-lbl">Th 6</span>
-                                                <span class="day-num">25</span>
-                                            </div>
-                                            <div class="date-item" data-date="2026-06-27">
-                                                <span class="day-lbl">Th 7</span>
-                                                <span class="day-num">26</span>
-                                            </div>
-                                            <div class="date-item" data-date="2026-06-28">
-                                                <span class="day-lbl">CN</span>
-                                                <span class="day-num">27</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Time Slot Grids -->
-                                <div class="booking-section">
-                                    <h4 class="booking-section-title">Giờ sáng (Sân mát)</h4>
-                                    <div class="time-grid">
-                                        <button class="time-slot active" data-time="08:00">08:00</button>
-                                        <button class="time-slot" data-time="09:00">09:00</button>
-                                        <button class="time-slot" data-time="10:00">10:00</button>
-                                        <button class="time-slot disabled" data-time="11:00" disabled>11:00</button>
-                                    </div>
-
-                                    <h4 class="booking-section-title mt-15">Giờ chiều/tối (Có đèn)</h4>
-                                    <div class="time-grid">
-                                        <button class="time-slot" data-time="14:00">14:00</button>
-                                        <button class="time-slot disabled" data-time="15:00" disabled>15:00</button>
-                                        <button class="time-slot active" data-time="18:00">18:00</button>
-                                        <button class="time-slot active" data-time="19:00">19:00</button>
-                                    </div>
-                                </div>
-
-                                <!-- Amenities Section -->
-                                <div class="booking-section">
-                                    <h4 class="booking-section-title">Tiện ích sân</h4>
-                                    <div class="amenities-list">
-                                        <span class="amenity-item"><i class="fa-solid fa-wifi"></i> Wifi miễn phí</span>
-                                        <span class="amenity-item"><i class="fa-solid fa-square-parking"></i> Bãi để xe</span>
-                                        <span class="amenity-item"><i class="fa-solid fa-shower"></i> Phòng tắm</span>
-                                        <span class="amenity-item"><i class="fa-solid fa-mug-hot"></i> Căng tin</span>
-                                    </div>
-                                </div>
+                        <!-- Categories -->
+                        <div class="categories-section">
+                            <h3 class="section-title">Môn thể thao</h3>
+                            <div class="categories-list">
+                                <button class="category-chip active" data-sport="pickleball">
+                                    <i class="fa-solid fa-table-tennis-paddle-ball"></i>
+                                    <span>Pickleball</span>
+                                </button>
+                                <button class="category-chip" data-sport="badminton">
+                                    <i class="fa-solid fa-shuttlecock"></i>
+                                    <span>Cầu lông</span>
+                                </button>
+                                <button class="category-chip" data-sport="tennis">
+                                    <i class="fa-solid fa-baseball-bat-ball"></i>
+                                    <span>Tennis</span>
+                                </button>
+                                <button class="category-chip" data-sport="basketball">
+                                    <i class="fa-solid fa-basketball"></i>
+                                    <span>Bóng rổ</span>
+                                </button>
                             </div>
                         </div>
 
-                        <!-- Sticky Bottom Checkout Drawer -->
-                        <div class="checkout-drawer">
-                            <div class="price-summary">
-                                <span class="summary-label" id="summary-hours-label">1 SÂN X 3 GIỜ</span>
-                                <span class="summary-total" id="summary-price-value">600.000đ</span>
+                        <!-- Featured Courts -->
+                        <div class="featured-section">
+                            <div class="section-header">
+                                <h3 class="section-title">Sân nổi bật gần bạn</h3>
+                                <a href="#" class="view-all-link" id="home-view-all">Xem tất cả</a>
                             </div>
-                            <button class="btn-checkout" id="checkout-action-btn">Thanh toán</button>
-                        </div>
-                    </section>
-
-                    <!-- SCREEN 4: BOOKINGS (LỊCH ĐẶT SÂN) -->
-                    <section class="app-screen" id="screen-bookings">
-                        <header class="app-header">
-                            <h2 class="app-title">Lịch Sử Đặt Sân</h2>
-                            <button class="header-icon-btn" aria-label="Notifications">
-                                <i class="fa-regular fa-bell"></i>
-                            </button>
-                        </header>
-
-                        <!-- Tab Subnav -->
-                        <div class="booking-tabs">
-                            <button class="booking-tab active" data-tab="upcoming">Sắp chơi</button>
-                            <button class="booking-tab" data-tab="past">Đã chơi</button>
-                        </div>
-
-                        <div class="screen-scrollable">
                             
-                            <!-- Tab Content Upcoming -->
-                            <div class="booking-tab-content active" id="tab-upcoming">
-                                <div class="booking-list" id="upcoming-list-container">
-                                    <!-- Booking Upcoming Card 1 -->
-                                    <div class="booking-history-card">
-                                        <div class="card-top">
-                                            <div class="icon-avatar bg-pickleball"><i class="fa-solid fa-table-tennis-paddle-ball"></i></div>
-                                            <div class="card-title-block">
-                                                <h4>Pickleball Central District</h4>
-                                                <p class="address-sub">123 Lê Lợi, Quận 1, TP. HCM</p>
-                                            </div>
-                                            <span class="status-badge status-paid">Đã thanh toán</span>
+                            <div class="courts-list" id="featured-courts-container">
+                                <!-- Featured Court 1 -->
+                                <div class="court-card" data-court-id="1">
+                                    <div class="court-img-wrapper">
+                                        <img src="assets/images/pickleball-1.png" alt="Kinetic Arena">
+                                        <span class="court-badge">Pickleball</span>
+                                        <button class="fav-btn" aria-label="Favorite"><i class="fa-regular fa-heart"></i></button>
+                                    </div>
+                                    <div class="court-details">
+                                        <div class="court-header">
+                                            <h4 class="court-name">Kinetic Arena Q.1</h4>
+                                            <span class="court-rating"><i class="fa-solid fa-star"></i> 4.9</span>
                                         </div>
-                                        <div class="card-middle">
-                                            <div class="time-info">
-                                                <i class="fa-regular fa-calendar"></i>
-                                                <span>Thứ 3, 22/06/2026</span>
-                                            </div>
-                                            <div class="time-info">
-                                                <i class="fa-regular fa-clock"></i>
-                                                <span>18:00 - 20:00 (2 giờ)</span>
-                                            </div>
-                                            <div class="price-info">
-                                                <span>Tổng tiền: </span>
-                                                <strong>400.000đ</strong>
-                                            </div>
-                                        </div>
-                                        <div class="card-bottom">
-                                            <span class="booking-code">Mã đặt sân: KC-89421</span>
-                                            <button class="btn-action-history">Xem mã QR</button>
+                                        <p class="court-specs"><i class="fa-solid fa-house"></i> Trong nhà | Sân cao cấp</p>
+                                        <div class="court-footer">
+                                            <div class="court-price">150.000đ <span>/ giờ</span></div>
+                                            <button class="btn-book-now">Đặt ngay</button>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <!-- Tab Content Past -->
-                            <div class="booking-tab-content" id="tab-past">
-                                <div class="booking-list" id="past-list-container">
-                                    <!-- Booking Past Card 1 -->
-                                    <div class="booking-history-card">
-                                        <div class="card-top">
-                                            <div class="icon-avatar bg-badminton"><i class="fa-solid fa-shuttlecock"></i></div>
-                                            <div class="card-title-block">
-                                                <h4>Kinetic Arena Quận 1</h4>
-                                                <p class="address-sub">45 Nguyễn Huệ, Quận 1, TP. HCM</p>
-                                            </div>
-                                            <span class="status-badge status-done">Hoàn thành</span>
+                                <!-- Featured Court 2 -->
+                                <div class="court-card" data-court-id="2">
+                                    <div class="court-img-wrapper">
+                                        <img src="assets/images/badminton-1.png" alt="Sân cầu lông">
+                                        <span class="court-badge">Cầu lông</span>
+                                        <button class="fav-btn" aria-label="Favorite"><i class="fa-regular fa-heart"></i></button>
+                                    </div>
+                                    <div class="court-details">
+                                        <div class="court-header">
+                                            <h4 class="court-name">Sân Cầu Lông Đa Năng</h4>
+                                            <span class="court-rating"><i class="fa-solid fa-star"></i> 4.9</span>
                                         </div>
-                                        <div class="card-middle">
-                                            <div class="time-info">
-                                                <i class="fa-regular fa-calendar"></i>
-                                                <span>Thứ 2, 15/06/2026</span>
-                                            </div>
-                                            <div class="time-info">
-                                                <i class="fa-regular fa-clock"></i>
-                                                <span>08:00 - 10:00 (2 giờ)</span>
-                                            </div>
-                                            <div class="price-info">
-                                                <span>Tổng tiền: </span>
-                                                <strong>300.000đ</strong>
-                                            </div>
+                                        <p class="court-specs"><i class="fa-solid fa-wind"></i> Có máy lạnh | Sân thảm gỗ</p>
+                                        <div class="court-footer">
+                                            <div class="court-price">180.000đ <span>/ giờ</span></div>
+                                            <button class="btn-book-now">Đặt ngay</button>
                                         </div>
-                                        <div class="card-bottom">
-                                            <span class="booking-code">Mã đặt sân: KC-21495</span>
-                                            <button class="btn-action-history secondary">Đặt lại</button>
+                                    </div>
+                                </div>
+
+                                <!-- Featured Court 3 -->
+                                <div class="court-card" data-court-id="3">
+                                    <div class="court-img-wrapper">
+                                        <img src="assets/images/tennis-1.png" alt="Tennis court">
+                                        <span class="court-badge">Tennis</span>
+                                        <button class="fav-btn" aria-label="Favorite"><i class="fa-regular fa-heart"></i></button>
+                                    </div>
+                                    <div class="court-details">
+                                        <div class="court-header">
+                                            <h4 class="court-name">Pro Court Tennis Hub</h4>
+                                            <span class="court-rating"><i class="fa-solid fa-star"></i> 4.8</span>
+                                        </div>
+                                        <p class="court-specs"><i class="fa-solid fa-cloud-sun"></i> Ngoài trời | Có đèn chiếu sáng</p>
+                                        <div class="court-footer">
+                                            <div class="court-price">220.000đ <span>/ giờ</span></div>
+                                            <button class="btn-book-now">Đặt ngay</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </section>
 
-                    <!-- SCREEN 5: PROFILE (TRANG CÁ NHÂN) -->
-                    <section class="app-screen" id="screen-profile">
-                        <header class="app-header">
-                            <h2 class="app-title">Trang Cá Nhân</h2>
-                            <button class="header-icon-btn" aria-label="Settings">
-                                <i class="fa-solid fa-gear"></i>
-                            </button>
-                        </header>
-
-                        <div class="screen-scrollable">
-                            <!-- User Card Info -->
-                            <div class="user-profile-header">
-                                <div class="profile-avatar">
-                                    <img src="assets/images/user-profile.png" alt="Nguyễn Văn Huy">
-                                </div>
-                                <div class="user-meta">
-                                    <h3>Nguyễn Văn Huy</h3>
-                                    <span class="membership-badge"><i class="fa-solid fa-crown"></i> Gold Member</span>
-                                </div>
+                        <!-- Partner Invite -->
+                        <div class="partner-invite">
+                            <div class="invite-content">
+                                <h4>Bạn là chủ sân?</h4>
+                                <p>Hợp tác cùng Kinetic Court để tiếp cận hàng ngàn khách hàng tiềm năng mỗi ngày.</p>
                             </div>
-
-                            <!-- Loyalty Points Panel -->
-                            <div class="points-panel">
-                                <div class="point-item">
-                                    <span class="point-value">1.250</span>
-                                    <span class="point-label">Điểm tích lũy</span>
-                                </div>
-                                <div class="divider"></div>
-                                <div class="point-item">
-                                    <span class="point-value">3</span>
-                                    <span class="point-label">Voucher khả dụng</span>
-                                </div>
-                            </div>
-
-                            <!-- Menu Options list -->
-                            <ul class="profile-menu">
-                                <li class="menu-item">
-                                    <div class="menu-label">
-                                        <i class="fa-regular fa-user"></i>
-                                        <span>Thông tin tài khoản</span>
-                                    </div>
-                                    <i class="fa-solid fa-chevron-right chevron-next"></i>
-                                </li>
-                                <li class="menu-item">
-                                    <div class="menu-label">
-                                        <i class="fa-solid fa-percent"></i>
-                                        <span>Ưu đãi của tôi</span>
-                                        <span class="badge-count">3</span>
-                                    </div>
-                                    <i class="fa-solid fa-chevron-right chevron-next"></i>
-                                </li>
-                                <li class="menu-item">
-                                    <div class="menu-label">
-                                        <i class="fa-regular fa-heart"></i>
-                                        <span>Sân yêu thích</span>
-                                    </div>
-                                    <i class="fa-solid fa-chevron-right chevron-next"></i>
-                                </li>
-                                <li class="menu-item">
-                                    <div class="menu-label">
-                                        <i class="fa-regular fa-circle-question"></i>
-                                        <span>Liên hệ hỗ trợ</span>
-                                    </div>
-                                    <i class="fa-solid fa-chevron-right chevron-next"></i>
-                                </li>
-                                <li class="menu-item">
-                                    <div class="menu-label">
-                                        <i class="fa-solid fa-circle-info"></i>
-                                        <span>Cài đặt ứng dụng</span>
-                                    </div>
-                                    <i class="fa-solid fa-chevron-right chevron-next"></i>
-                                </li>
-                                <li class="menu-item logout">
-                                    <div class="menu-label">
-                                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                                        <span>Đăng xuất</span>
-                                    </div>
-                                    <i class="fa-solid fa-chevron-right chevron-next"></i>
-                                </li>
-                            </ul>
+                            <button class="btn-partner">Đăng ký ngay</button>
                         </div>
-                    </section>
+                    </div>
+                </section>
 
-                </div> <!-- END PHONE APP CONTENT -->
+                <!-- SCREEN 2: SEARCH (TÌM KIẾM) -->
+                <section class="app-screen" id="screen-search">
+                    <header class="app-header">
+                        <h2 class="app-title">KINETIC COURT</h2>
+                        <button class="header-icon-btn" aria-label="Notifications">
+                            <i class="fa-regular fa-bell"></i>
+                        </button>
+                    </header>
 
-                <!-- Status Bottom Navigation Bar -->
-                <nav class="phone-app-nav">
-                    <button class="nav-item active" data-target="screen-home">
-                        <i class="fa-solid fa-house"></i>
-                        <span>Trang chủ</span>
+                    <div class="screen-scrollable">
+                        <!-- Active Search Input -->
+                        <div class="search-bar-container">
+                            <div class="search-input-wrapper">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                <input type="text" value="Sân Pickleball gần đây" placeholder="Tìm kiếm sân hoặc khu vực..." class="search-input">
+                            </div>
+                            <button class="filter-btn" aria-label="Filters"><i class="fa-solid fa-sliders"></i></button>
+                        </div>
+
+                        <!-- Filter Chips Scroll -->
+                        <div class="filter-chips-container">
+                            <button class="filter-chip active">Gần nhất</button>
+                            <button class="filter-chip">Giá thấp</button>
+                            <button class="filter-chip">Có máy lạnh</button>
+                            <button class="filter-chip">Trong nhà</button>
+                        </div>
+
+                        <!-- Search Results List -->
+                        <div class="search-results">
+                            <!-- Court Result 1 -->
+                            <div class="court-result-card" data-court-id="4">
+                                <div class="result-img-wrapper">
+                                    <img src="assets/images/court-detail-main.png" alt="Pickleball Arena Q7">
+                                    <span class="result-badge">Pickleball</span>
+                                </div>
+                                <div class="result-info">
+                                    <div class="result-header">
+                                        <h4 class="result-name">Pickleball Arena Q7</h4>
+                                        <span class="result-distance"><i class="fa-solid fa-person-running"></i> 1.2 km</span>
+                                    </div>
+                                    <div class="result-rating"><i class="fa-solid fa-star"></i> 4.9 (48 đánh giá)</div>
+                                    
+                                    <div class="result-tags">
+                                        <span class="tag-item"><i class="fa-solid fa-plug"></i> Có điện</span>
+                                        <span class="tag-item"><i class="fa-solid fa-car"></i> Gửi xe</span>
+                                        <span class="tag-item"><i class="fa-solid fa-wind"></i> Máy lạnh</span>
+                                    </div>
+                                    <div class="result-footer">
+                                        <div class="result-price">130.000đ <span>/ giờ</span></div>
+                                        <button class="btn-book-now">Đặt ngay</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Court Result 2 -->
+                            <div class="court-result-card" data-court-id="5">
+                                <div class="result-img-wrapper">
+                                    <img src="assets/images/pickleball-1.png" alt="Elite Court Phú Mỹ Hưng">
+                                    <span class="result-badge">Pickleball</span>
+                                </div>
+                                <div class="result-info">
+                                    <div class="result-header">
+                                        <h4 class="result-name">Elite Court Phú Mỹ Hưng</h4>
+                                        <span class="result-distance"><i class="fa-solid fa-person-running"></i> 2.6 km</span>
+                                    </div>
+                                    <div class="result-rating"><i class="fa-solid fa-star"></i> 4.7 (32 đánh giá)</div>
+                                    
+                                    <div class="result-tags">
+                                        <span class="tag-item"><i class="fa-solid fa-plug"></i> Có điện</span>
+                                        <span class="tag-item"><i class="fa-solid fa-shower"></i> Phòng tắm</span>
+                                        <span class="tag-item"><i class="fa-solid fa-sun"></i> Sân sáng</span>
+                                    </div>
+                                    <div class="result-footer">
+                                        <div class="result-price">150.000đ <span>/ giờ</span></div>
+                                        <button class="btn-book-now">Đặt ngay</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Court Result 3 (Unavailable) -->
+                            <div class="court-result-card disabled">
+                                <div class="result-img-wrapper">
+                                    <img src="assets/images/badminton-1.png" alt="Sân Cầu Lông & Pickleball T4">
+                                    <span class="result-badge">Cầu lông</span>
+                                </div>
+                                <div class="result-info">
+                                    <div class="result-header">
+                                        <h4 class="result-name">Sân Cầu Lông & PB T4</h4>
+                                        <span class="result-distance"><i class="fa-solid fa-person-running"></i> 3.1 km</span>
+                                    </div>
+                                    <div class="result-rating"><i class="fa-solid fa-star"></i> 4.5 (19 đánh giá)</div>
+                                    
+                                    <div class="result-tags">
+                                        <span class="tag-item"><i class="fa-solid fa-car"></i> Gửi xe</span>
+                                        <span class="tag-item"><i class="fa-solid fa-umbrella"></i> Có mái che</span>
+                                    </div>
+                                    <div class="result-footer">
+                                        <div class="result-price">100.000đ <span>/ giờ</span></div>
+                                        <button class="btn-book-now btn-disabled" disabled>Hết chỗ</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SCREEN 3: DETAILS (CHI TIẾT SÂN) -->
+                <section class="app-screen" id="screen-details">
+                    <header class="app-header detail-header">
+                        <button class="back-btn" id="details-back-btn" aria-label="Go Back">
+                            <i class="fa-solid fa-chevron-left"></i>
+                        </button>
+                        <h2 class="app-title text-center">KINETIC COURT</h2>
+                        <button class="header-icon-btn" aria-label="Share">
+                            <i class="fa-solid fa-share-nodes"></i>
+                        </button>
+                    </header>
+
+                    <div class="screen-scrollable">
+                        <!-- Court Images Cover Slider -->
+                        <div class="detail-gallery">
+                            <img src="assets/images/court-detail-main.png" alt="Pickleball Central District" id="detail-main-img">
+                            <div class="gallery-thumbs">
+                                <img src="assets/images/court-detail-main.png" alt="Thumb 1" class="thumb active">
+                                <img src="assets/images/pickleball-1.png" alt="Thumb 2" class="thumb">
+                            </div>
+                        </div>
+
+                        <div class="detail-container">
+                            <!-- Title & Ratings -->
+                            <div class="detail-info-block">
+                                <div class="title-row">
+                                    <h3 class="detail-court-name" id="detail-court-title">Pickleball Central District</h3>
+                                    <span class="detail-court-rating"><i class="fa-solid fa-star"></i> 4.9</span>
+                                </div>
+                                <p class="detail-court-address">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                    <span>123 Lê Lợi, Phường Bến Thành, Quận 1, TP. HCM</span>
+                                </p>
+                                <button class="btn-map"><i class="fa-solid fa-map-location-dot"></i> Xem bản đồ</button>
+                            </div>
+
+                            <!-- Date Strip Selector -->
+                            <div class="booking-section">
+                                <h4 class="booking-section-title">Chọn ngày chơi</h4>
+                                <div class="date-strip-wrapper">
+                                    <div class="date-strip">
+                                        <div class="date-item" data-date="2026-06-22">
+                                            <span class="day-lbl">Th 2</span>
+                                            <span class="day-num">21</span>
+                                        </div>
+                                        <div class="date-item active" data-date="2026-06-23">
+                                            <span class="day-lbl">Th 3</span>
+                                            <span class="day-num">22</span>
+                                        </div>
+                                        <div class="date-item" data-date="2026-06-24">
+                                            <span class="day-lbl">Th 4</span>
+                                            <span class="day-num">23</span>
+                                        </div>
+                                        <div class="date-item" data-date="2026-06-25">
+                                            <span class="day-lbl">Th 5</span>
+                                            <span class="day-num">24</span>
+                                        </div>
+                                        <div class="date-item" data-date="2026-06-26">
+                                            <span class="day-lbl">Th 6</span>
+                                            <span class="day-num">25</span>
+                                        </div>
+                                        <div class="date-item" data-date="2026-06-27">
+                                            <span class="day-lbl">Th 7</span>
+                                            <span class="day-num">26</span>
+                                        </div>
+                                        <div class="date-item" data-date="2026-06-28">
+                                            <span class="day-lbl">CN</span>
+                                            <span class="day-num">27</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Time Slot Grids -->
+                            <div class="booking-section">
+                                <h4 class="booking-section-title">Giờ sáng (Sân mát)</h4>
+                                <div class="time-grid">
+                                    <button class="time-slot active" data-time="08:00">08:00</button>
+                                    <button class="time-slot" data-time="09:00">09:00</button>
+                                    <button class="time-slot" data-time="10:00">10:00</button>
+                                    <button class="time-slot disabled" data-time="11:00" disabled>11:00</button>
+                                </div>
+
+                                <h4 class="booking-section-title mt-15">Giờ chiều/tối (Có đèn)</h4>
+                                <div class="time-grid">
+                                    <button class="time-slot" data-time="14:00">14:00</button>
+                                    <button class="time-slot disabled" data-time="15:00" disabled>15:00</button>
+                                    <button class="time-slot active" data-time="18:00">18:00</button>
+                                    <button class="time-slot active" data-time="19:00">19:00</button>
+                                </div>
+                            </div>
+
+                            <!-- Amenities Section -->
+                            <div class="booking-section">
+                                <h4 class="booking-section-title">Tiện ích sân</h4>
+                                <div class="amenities-list">
+                                    <span class="amenity-item"><i class="fa-solid fa-wifi"></i> Wifi miễn phí</span>
+                                    <span class="amenity-item"><i class="fa-solid fa-square-parking"></i> Bãi để xe</span>
+                                    <span class="amenity-item"><i class="fa-solid fa-shower"></i> Phòng tắm</span>
+                                    <span class="amenity-item"><i class="fa-solid fa-mug-hot"></i> Căng tin</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sticky Bottom Checkout Drawer -->
+                    <div class="checkout-drawer">
+                        <div class="price-summary">
+                            <span class="summary-label" id="summary-hours-label">1 SÂN X 3 GIỜ</span>
+                            <span class="summary-total" id="summary-price-value">600.000đ</span>
+                        </div>
+                        <button class="btn-checkout" id="checkout-action-btn">Thanh toán</button>
+                    </div>
+                </section>
+
+                <!-- SCREEN 4: BOOKINGS (LỊCH ĐẶT SÂN) -->
+                <section class="app-screen" id="screen-bookings">
+                    <header class="app-header">
+                        <h2 class="app-title">Lịch Sử Đặt Sân</h2>
+                        <button class="header-icon-btn" aria-label="Notifications">
+                            <i class="fa-regular fa-bell"></i>
+                        </button>
+                    </header>
+
+                    <!-- Tab Subnav -->
+                    <div class="booking-tabs">
+                        <button class="booking-tab active" data-tab="upcoming">Sắp chơi</button>
+                        <button class="booking-tab" data-tab="past">Đã chơi</button>
+                    </div>
+
+                    <div class="screen-scrollable">
+                        
+                        <!-- Tab Content Upcoming -->
+                        <div class="booking-tab-content active" id="tab-upcoming">
+                            <div class="booking-list" id="upcoming-list-container">
+                                <!-- Booking Upcoming Card 1 -->
+                                <div class="booking-history-card">
+                                    <div class="card-top">
+                                        <div class="icon-avatar bg-pickleball"><i class="fa-solid fa-table-tennis-paddle-ball"></i></div>
+                                        <div class="card-title-block">
+                                            <h4>Pickleball Central District</h4>
+                                            <p class="address-sub">123 Lê Lợi, Quận 1, TP. HCM</p>
+                                        </div>
+                                        <span class="status-badge status-paid">Đã thanh toán</span>
+                                    </div>
+                                    <div class="card-middle">
+                                        <div class="time-info">
+                                            <i class="fa-regular fa-calendar"></i>
+                                            <span>Thứ 3, 22/06/2026</span>
+                                        </div>
+                                        <div class="time-info">
+                                            <i class="fa-regular fa-clock"></i>
+                                            <span>18:00 - 20:00 (2 giờ)</span>
+                                        </div>
+                                        <div class="price-info">
+                                            <span>Tổng tiền: </span>
+                                            <strong>400.000đ</strong>
+                                        </div>
+                                    </div>
+                                    <div class="card-bottom">
+                                        <span class="booking-code">Mã đặt sân: KC-89421</span>
+                                        <button class="btn-action-history">Xem mã QR</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab Content Past -->
+                        <div class="booking-tab-content" id="tab-past">
+                            <div class="booking-list" id="past-list-container">
+                                <!-- Booking Past Card 1 -->
+                                <div class="booking-history-card">
+                                    <div class="card-top">
+                                        <div class="icon-avatar bg-badminton"><i class="fa-solid fa-shuttlecock"></i></div>
+                                        <div class="card-title-block">
+                                            <h4>Kinetic Arena Quận 1</h4>
+                                            <p class="address-sub">45 Nguyễn Huệ, Quận 1, TP. HCM</p>
+                                        </div>
+                                        <span class="status-badge status-done">Hoàn thành</span>
+                                    </div>
+                                    <div class="card-middle">
+                                        <div class="time-info">
+                                            <i class="fa-regular fa-calendar"></i>
+                                            <span>Thứ 2, 15/06/2026</span>
+                                        </div>
+                                        <div class="time-info">
+                                            <i class="fa-regular fa-clock"></i>
+                                            <span>08:00 - 10:00 (2 giờ)</span>
+                                        </div>
+                                        <div class="price-info">
+                                            <span>Tổng tiền: </span>
+                                            <strong>300.000đ</strong>
+                                        </div>
+                                    </div>
+                                    <div class="card-bottom">
+                                        <span class="booking-code">Mã đặt sân: KC-21495</span>
+                                        <button class="btn-action-history secondary">Đặt lại</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SCREEN 5: PROFILE (TRANG CÁ NHÂN) -->
+                <section class="app-screen" id="screen-profile">
+                    <header class="app-header">
+                        <h2 class="app-title">Trang Cá Nhân</h2>
+                        <button class="header-icon-btn" aria-label="Settings">
+                            <i class="fa-solid fa-gear"></i>
+                        </button>
+                    </header>
+
+                    <div class="screen-scrollable">
+                        <!-- User Card Info -->
+                        <div class="user-profile-header">
+                            <div class="profile-avatar">
+                                <img src="assets/images/user-profile.png" alt="Nguyễn Văn Huy">
+                            </div>
+                            <div class="user-meta">
+                                <h3>Nguyễn Văn Huy</h3>
+                                <span class="membership-badge"><i class="fa-solid fa-crown"></i> Gold Member</span>
+                            </div>
+                        </div>
+
+                        <!-- Loyalty Points Panel -->
+                        <div class="points-panel">
+                            <div class="point-item">
+                                <span class="point-value">1.250</span>
+                                <span class="point-label">Điểm tích lũy</span>
+                            </div>
+                            <div class="divider"></div>
+                            <div class="point-item">
+                                <span class="point-value">3</span>
+                                <span class="point-label">Voucher khả dụng</span>
+                            </div>
+                        </div>
+
+                        <!-- Menu Options list -->
+                        <ul class="profile-menu">
+                            <li class="menu-item">
+                                <div class="menu-label">
+                                    <i class="fa-regular fa-user"></i>
+                                    <span>Thông tin tài khoản</span>
+                                </div>
+                                <i class="fa-solid fa-chevron-right chevron-next"></i>
+                            </li>
+                            <li class="menu-item">
+                                <div class="menu-label">
+                                    <i class="fa-solid fa-percent"></i>
+                                    <span>Ưu đãi của tôi</span>
+                                    <span class="badge-count">3</span>
+                                </div>
+                                <i class="fa-solid fa-chevron-right chevron-next"></i>
+                            </li>
+                            <li class="menu-item">
+                                <div class="menu-label">
+                                    <i class="fa-regular fa-heart"></i>
+                                    <span>Sân yêu thích</span>
+                                </div>
+                                <i class="fa-solid fa-chevron-right chevron-next"></i>
+                            </li>
+                            <li class="menu-item" id="profile-admin-trigger">
+                                <div class="menu-label">
+                                    <i class="fa-solid fa-user-gear" style="color: var(--accent-blue);"></i>
+                                    <span style="color: var(--accent-blue); font-weight: 600;">Chuyển sang giao diện Admin</span>
+                                </div>
+                                <i class="fa-solid fa-chevron-right chevron-next" style="color: var(--accent-blue);"></i>
+                            </li>
+                            <li class="menu-item">
+                                <div class="menu-label">
+                                    <i class="fa-regular fa-circle-question"></i>
+                                    <span>Liên hệ hỗ trợ</span>
+                                </div>
+                                <i class="fa-solid fa-chevron-right chevron-next"></i>
+                            </li>
+                            <li class="menu-item">
+                                <div class="menu-label">
+                                    <i class="fa-solid fa-circle-info"></i>
+                                    <span>Cài đặt ứng dụng</span>
+                                </div>
+                                <i class="fa-solid fa-chevron-right chevron-next"></i>
+                            </li>
+                            <li class="menu-item logout">
+                                <div class="menu-label">
+                                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                                    <span>Đăng xuất</span>
+                                </div>
+                                <i class="fa-solid fa-chevron-right chevron-next"></i>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+
+            </div> <!-- END PHONE APP CONTENT -->
+
+            <!-- Status Bottom Navigation Bar -->
+            <nav class="phone-app-nav">
+                <button class="nav-item active" data-target="screen-home">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Trang chủ</span>
+                </button>
+                <button class="nav-item" data-target="screen-search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <span>Tìm kiếm</span>
+                </button>
+                <button class="nav-item" data-target="screen-bookings">
+                    <i class="fa-solid fa-calendar-check"></i>
+                    <span>Lịch đặt</span>
+                </button>
+                <button class="nav-item" data-target="screen-profile">
+                    <i class="fa-solid fa-user"></i>
+                    <span>Cá nhân</span>
+                </button>
+            </nav>
+
+            <!-- Virtual Success Modal (Triggered on Checkout) -->
+            <div class="success-overlay" id="success-dialog">
+                <div class="success-card">
+                    <div class="success-icon-badge">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div>
+                    <h3>Đặt sân thành công!</h3>
+                    <p>Mã đặt sân của bạn là <strong id="success-booking-code">KC-00000</strong>. Bạn có thể xem chi tiết trong Lịch Sử Đặt Sân.</p>
+                    <button class="btn-success-close" id="btn-success-ok">Đồng ý</button>
+                </div>
+            </div>
+
+        </div> <!-- END APP CONTAINER -->
+    </div> <!-- END CLIENT VIEW WRAPPER -->
+
+
+    <!-- 2. Admin View Wrapper (Desktop Owner Dashboard) -->
+    <div class="admin-view-wrapper">
+        <div class="admin-dashboard-container">
+            <!-- Sidebar Navigation -->
+            <aside class="admin-sidebar">
+                <div class="admin-brand">
+                    <div class="admin-brand-icon"><i class="fa-solid fa-bolt"></i></div>
+                    <h2>KINETIC COURT</h2>
+                </div>
+                <nav class="admin-nav-menu">
+                    <button class="admin-nav-item active" data-panel="panel-dashboard">
+                        <i class="fa-solid fa-chart-pie"></i>
+                        <span>Bảng điều khiển</span>
                     </button>
-                    <button class="nav-item" data-target="screen-search">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                        <span>Tìm kiếm</span>
-                    </button>
-                    <button class="nav-item" data-target="screen-bookings">
-                        <i class="fa-solid fa-calendar-check"></i>
-                        <span>Lịch đặt</span>
-                    </button>
-                    <button class="nav-item" data-target="screen-profile">
-                        <i class="fa-solid fa-user"></i>
-                        <span>Cá nhân</span>
+                    <button class="admin-nav-item" data-panel="panel-courts">
+                        <i class="fa-solid fa-cubes"></i>
+                        <span>Quản lý sân & lịch</span>
                     </button>
                 </nav>
-
-                <!-- Virtual Success Modal (Triggered on Checkout) -->
-                <div class="success-overlay" id="success-dialog">
-                    <div class="success-card">
-                        <div class="success-icon-badge">
-                            <i class="fa-solid fa-circle-check"></i>
-                        </div>
-                        <h3>Đặt sân thành công!</h3>
-                        <p>Mã đặt sân của bạn là <strong id="success-booking-code">KC-00000</strong>. Bạn có thể xem chi tiết trong Lịch Sử Đặt Sân.</p>
-                        <button class="btn-success-close" id="btn-success-ok">Đồng ý</button>
+                <div class="admin-sidebar-footer">
+                    <div class="admin-user-avatar">
+                        <img src="assets/images/user-profile.png" alt="Admin user">
+                    </div>
+                    <div class="admin-user-info">
+                        <h4>Nguyễn Văn Huy</h4>
+                        <span>Chủ sân (Quản lý)</span>
                     </div>
                 </div>
+            </aside>
 
-    </div> <!-- END APP CONTAINER -->
+            <!-- Main Content Viewport -->
+            <main class="admin-viewport">
+                <!-- Top Header -->
+                <header class="admin-header">
+                    <h2 id="admin-panel-title">Bảng Điều Khiển</h2>
+                    
+                    <!-- Responsive Top Menu for Mobile (hidden on desktop) -->
+                    <div class="admin-mobile-nav">
+                        <button class="mobile-nav-btn active" data-panel="panel-dashboard" aria-label="Bảng điều khiển">
+                            <i class="fa-solid fa-chart-pie"></i>
+                        </button>
+                        <button class="mobile-nav-btn" data-panel="panel-courts" aria-label="Quản lý sân">
+                            <i class="fa-solid fa-cubes"></i>
+                        </button>
+                    </div>
+
+                    <div class="admin-header-actions">
+                        <button class="admin-action-btn" aria-label="Notifications">
+                            <i class="fa-regular fa-bell"></i>
+                            <span class="badge-dot"></span>
+                        </button>
+                        <button class="admin-action-btn" id="btn-export-csv">
+                            <i class="fa-solid fa-file-export"></i> 
+                            <span>Xuất báo cáo CSV</span>
+                        </button>
+                    </div>
+                </header>
+
+                <div class="admin-panel-content">
+                    
+                    <!-- PANEL A: BẢNG ĐIỀU KHIỂN (DASHBOARD) -->
+                    <div class="admin-sub-panel active" id="panel-dashboard">
+                        <!-- Stats Grid Row -->
+                        <div class="admin-stats-grid">
+                            <!-- Card 1 -->
+                            <div class="stat-widget double-wide">
+                                <div class="widget-header">
+                                    <span>TỔNG DOANH THU (7 NGÀY QUA)</span>
+                                    <span class="trend trend-up"><i class="fa-solid fa-arrow-trend-up"></i> +12.4%</span>
+                                </div>
+                                <div class="widget-value">12.482.500đ</div>
+                                <p class="widget-desc">Đạt được qua 248 lượt đặt tại 5 sân hoạt động</p>
+                                <!-- Revenue chart mockup (CSS flex columns) -->
+                                <div class="revenue-chart">
+                                    <div class="chart-col" style="height: 35%;" data-day="T2"></div>
+                                    <div class="chart-col" style="height: 48%;" data-day="T3"></div>
+                                    <div class="chart-col" style="height: 60%;" data-day="T4"></div>
+                                    <div class="chart-col active" style="height: 85%;" data-day="T5"></div>
+                                    <div class="chart-col" style="height: 70%;" data-day="T6"></div>
+                                    <div class="chart-col" style="height: 90%;" data-day="T7"></div>
+                                    <div class="chart-col" style="height: 55%;" data-day="CN"></div>
+                                </div>
+                            </div>
+                            <!-- Card 2 -->
+                            <div class="stat-widget">
+                                <div class="widget-header">
+                                    <span>KHÁCH HÀNG MỚI</span>
+                                    <span class="trend trend-up"><i class="fa-solid fa-arrow-trend-up"></i> +18%</span>
+                                </div>
+                                <div class="widget-value">42</div>
+                                <p class="widget-desc">Tài khoản mới đăng ký trong tuần này</p>
+                                <div class="widget-icon"><i class="fa-solid fa-user-plus"></i></div>
+                            </div>
+                            <!-- Card 3 -->
+                            <div class="stat-widget">
+                                <div class="widget-header">
+                                    <span>HIỆU SUẤT TRUNG BÌNH</span>
+                                </div>
+                                <div class="widget-value">1.5 giờ</div>
+                                <p class="widget-desc">Thời gian đặt trung bình mỗi lượt chơi</p>
+                                <div class="widget-progress-track">
+                                    <div class="widget-progress-fill" style="width: 75%;"></div>
+                                </div>
+                                <span class="widget-progress-lbl">Hiệu suất ổn định</span>
+                            </div>
+                            <!-- Card 4 -->
+                            <div class="stat-widget half-height">
+                                <div class="widget-header">
+                                    <span>LƯỢT ĐẶT</span>
+                                    <span class="trend trend-up"><i class="fa-solid fa-arrow-trend-up"></i> +12%</span>
+                                </div>
+                                <div class="widget-value">148</div>
+                            </div>
+                            <!-- Card 5 -->
+                            <div class="stat-widget half-height">
+                                <div class="widget-header">
+                                    <span>SÂN ĐANG HOẠT ĐỘNG</span>
+                                </div>
+                                <div class="widget-value" id="active-courts-count">5/5</div>
+                            </div>
+                        </div>
+
+                        <!-- Dashboard Grid Content (Schedule & Recent Bookings) -->
+                        <div class="admin-dashboard-layout">
+                            <!-- Column 1: Today's Schedule -->
+                            <div class="dashboard-card">
+                                <div class="card-header">
+                                    <h3>Lịch Trình Hôm Nay</h3>
+                                    <button class="btn-lock-schedule" id="btn-quick-lock"><i class="fa-solid fa-ban"></i> Khóa Nhanh</button>
+                                </div>
+                                <div class="schedule-timeline" id="today-schedule-list">
+                                    <!-- Slot 1 -->
+                                    <div class="timeline-item">
+                                        <span class="time-lbl">09:00</span>
+                                        <div class="timeline-content">
+                                            <div class="timeline-header">
+                                                <h4>Sân 1 &bull; Pickleball</h4>
+                                                <span class="badge-status-dot active"></span>
+                                            </div>
+                                            <p>Khách: John D. & Nhóm</p>
+                                        </div>
+                                    </div>
+                                    <!-- Slot 2 -->
+                                    <div class="timeline-item">
+                                        <span class="time-lbl">10:30</span>
+                                        <div class="timeline-content">
+                                            <div class="timeline-header">
+                                                <h4>Sân 3 &bull; Tennis Pro</h4>
+                                                <span class="badge-status-dot active"></span>
+                                            </div>
+                                            <p>Khách: Lớp Trung Cấp</p>
+                                        </div>
+                                    </div>
+                                    <!-- Slot 3 (Locked) -->
+                                    <div class="timeline-item locked">
+                                        <span class="time-lbl">12:00</span>
+                                        <div class="timeline-content">
+                                            <div class="timeline-header">
+                                                <h4>LỊCH ĐÃ KHÓA</h4>
+                                                <i class="fa-solid fa-lock"></i>
+                                            </div>
+                                            <p>Lý do: Bảo trì đèn chiếu sáng định kỳ</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Column 2: Recent Bookings -->
+                            <div class="dashboard-card">
+                                <div class="card-header">
+                                    <h3>Lịch Đặt Gần Đây</h3>
+                                </div>
+                                <div class="recent-bookings-list" id="admin-recent-bookings">
+                                    <!-- Booking 1 -->
+                                    <div class="booking-item-row">
+                                        <div class="booking-desc-col">
+                                            <h4>Michael Sanders</h4>
+                                            <span>Sân 4 &bull; 2 Giờ &bull; 400.000đ</span>
+                                        </div>
+                                        <div class="booking-time-col">
+                                            <span class="badge-paid">ĐÃ THANH TOÁN</span>
+                                            <span class="time-ago">2 phút trước</span>
+                                        </div>
+                                    </div>
+                                    <!-- Booking 2 -->
+                                    <div class="booking-item-row">
+                                        <div class="booking-desc-col">
+                                            <h4>Sarah Lee</h4>
+                                            <span>Sân 1 &bull; 1 Giờ &bull; 180.000đ</span>
+                                        </div>
+                                        <div class="booking-time-col">
+                                            <span class="badge-pending">CHỜ XỬ LÝ</span>
+                                            <span class="time-ago">15 phút trước</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- END PANEL A -->
+
+                    <!-- PANEL B: QUẢN LÝ SÂN (COURTS MANAGEMENT) -->
+                    <div class="admin-sub-panel" id="panel-courts">
+                        <div class="admin-courts-layout">
+                            <!-- Column 1: Active Booking cards -->
+                            <div class="admin-column">
+                                <div class="card-header">
+                                    <h3>Danh Sách Duyệt Khách Nhận Sân</h3>
+                                </div>
+                                <div class="admin-bookings-queue" id="admin-bookings-queue">
+                                    <!-- Booking Item 1 -->
+                                    <div class="queue-card" id="qcard-9824">
+                                        <div class="queue-header">
+                                            <span class="queue-time-lbl">Khung giờ: 20:00 - 21:00</span>
+                                            <span class="queue-date-lbl">24 tháng 10, 2026</span>
+                                        </div>
+                                        <div class="queue-body">
+                                            <h4>Sân 3 &bull; Pro Court Tennis Hub</h4>
+                                            <p class="queue-client">Khách hàng: <strong>Sarah Jenkins</strong></p>
+                                            <span class="queue-payment">Thanh toán tại quầy</span>
+                                            <span class="queue-id">Mã đặt: #KC-9824-X</span>
+                                        </div>
+                                        <div class="queue-actions">
+                                            <button class="btn-q-detail">Chi tiết</button>
+                                            <button class="btn-q-checkin" data-id="qcard-9824">Nhận sân</button>
+                                        </div>
+                                    </div>
+
+                                    <!-- Booking Item 2 -->
+                                    <div class="queue-card" id="qcard-9901">
+                                        <div class="queue-header">
+                                            <span class="queue-time-lbl">Khung giờ: 07:00 - 09:00</span>
+                                            <span class="queue-date-lbl">25 tháng 10, 2026</span>
+                                        </div>
+                                        <div class="queue-body">
+                                            <h4>Sân 1 &bull; Kinetic Arena Q.1</h4>
+                                            <p class="queue-client">Khách hàng: <strong>Michael Zhao</strong></p>
+                                            <span class="queue-payment paid">Đã thanh toán Online</span>
+                                            <span class="queue-id">Mã đặt: #KC-9901-A</span>
+                                        </div>
+                                        <div class="queue-actions">
+                                            <button class="btn-q-detail">Chi tiết</button>
+                                            <button class="btn-q-checkin" data-id="qcard-9901">Nhận sân</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Column 2: Status control & Top Courts leaderboard -->
+                            <div class="admin-column gap-20">
+                                <!-- Courts Maintenance Card -->
+                                <div class="dashboard-card">
+                                    <div class="card-header">
+                                        <h3>Quản Lý Trạng Thái Sân</h3>
+                                    </div>
+                                    <div class="courts-maintenance-list">
+                                        <!-- Court Item 1 -->
+                                        <div class="maintenance-item-row" data-court-key="4">
+                                            <div class="m-info">
+                                                <h4>Pickleball Central District</h4>
+                                                <span class="m-type">Pickleball &bull; Trong nhà</span>
+                                            </div>
+                                            <div class="m-status-control">
+                                                <span class="m-status-badge status-active">Đang hoạt động</span>
+                                                <label class="switch-toggle">
+                                                    <input type="checkbox" checked class="m-toggle-chk" data-court="4">
+                                                    <span class="slider-toggle-btn"></span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <!-- Court Item 2 -->
+                                        <div class="maintenance-item-row" data-court-key="2">
+                                            <div class="m-info">
+                                                <h4>Sân Cầu Lông Đa Năng</h4>
+                                                <span class="m-type">Cầu lông &bull; Trong nhà</span>
+                                            </div>
+                                            <div class="m-status-control">
+                                                <span class="m-status-badge status-active">Đang hoạt động</span>
+                                                <label class="switch-toggle">
+                                                    <input type="checkbox" checked class="m-toggle-chk" data-court="2">
+                                                    <span class="slider-toggle-btn"></span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <!-- Court Item 3 -->
+                                        <div class="maintenance-item-row" data-court-key="3">
+                                            <div class="m-info">
+                                                <h4>Pro Court Tennis Hub</h4>
+                                                <span class="m-type">Tennis &bull; Ngoài trời</span>
+                                            </div>
+                                            <div class="m-status-control">
+                                                <span class="m-status-badge status-active">Đang hoạt động</span>
+                                                <label class="switch-toggle">
+                                                    <input type="checkbox" checked class="m-toggle-chk" data-court="3">
+                                                    <span class="slider-toggle-btn"></span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Leaderboard -->
+                                <div class="dashboard-card">
+                                    <div class="card-header">
+                                        <h3>Sân Có Doanh Thu Cao Nhất</h3>
+                                    </div>
+                                    <div class="leaderboard-list">
+                                        <!-- Item 1 -->
+                                        <div class="leaderboard-row">
+                                            <span class="rank bg-pickleball">C1</span>
+                                            <div class="l-name-block">
+                                                <h4>Pickleball Central District</h4>
+                                                <span>68 lượt đặt chơi</span>
+                                            </div>
+                                            <div class="l-rev">
+                                                <strong class="rev-val">4.080.000đ</strong>
+                                                <div class="rev-bar" style="width: 100%;"></div>
+                                            </div>
+                                        </div>
+                                        <!-- Item 2 -->
+                                        <div class="leaderboard-row">
+                                            <span class="rank bg-badminton">C2</span>
+                                            <div class="l-name-block">
+                                                <h4>Sân Cầu Lông Đa Năng</h4>
+                                                <span>52 lượt đặt chơi</span>
+                                            </div>
+                                            <div class="l-rev">
+                                                <strong class="rev-val">3.120.000đ</strong>
+                                                <div class="rev-bar" style="width: 75%;"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- END PANEL B -->
+
+                </div> <!-- END PORT CONTENT -->
+            </main>
+        </div>
+    </div> <!-- END ADMIN VIEW WRAPPER -->
 
     <!-- Custom Script -->
     <script src="js/script.js"></script>

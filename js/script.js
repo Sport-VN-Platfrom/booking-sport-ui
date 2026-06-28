@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
             icon: 'fa-baseball-bat-ball'
         },
         '4': {
-            name: 'Pickleball Arena Q7',
+            name: 'Pickleball Central District',
             sport: 'pickleball',
             rating: '4.9',
             price: 130000,
@@ -177,13 +177,13 @@ document.addEventListener('DOMContentLoaded', () => {
             resetTimeSlots();
             updateCalculatedPrice();
         } else {
-            // Default central district hardcode fallback
-            selectedCourtId = 'central';
-            selectedCourtRate = 200000;
+            // Default central district fallback
+            selectedCourtId = '4';
+            selectedCourtRate = 130000;
             selectedCourtName = 'Pickleball Central District';
             selectedCourtIconClass = 'bg-pickleball';
             selectedCourtIcon = 'fa-table-tennis-paddle-ball';
-            selectedCourtAddress = '123 Lê Lợi, Phường Bến Thành, Quận 1, TP. HCM';
+            selectedCourtAddress = '104 Nguyễn Hữu Thọ, Quận 7, TP. HCM';
 
             document.getElementById('detail-court-title').textContent = selectedCourtName;
             document.querySelector('.detail-court-address span').textContent = selectedCourtAddress;
@@ -201,7 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cards.forEach(card => {
             // Clicking card details (not book button directly)
             card.addEventListener('click', (e) => {
-                if (e.target.tagName !== 'BUTTON' && !card.classList.contains('disabled')) {
+                if (e.target.tagName !== 'BUTTON' && !card.classList.contains('disabled') && card.style.opacity !== '0.6') {
                     const id = card.getAttribute('data-court-id');
                     if (id) {
                         loadCourtDetails(id);
@@ -212,7 +212,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Clicking book button specifically
             const bookBtn = card.querySelector('.btn-book-now');
-            if (bookBtn && !card.classList.contains('disabled')) {
+            if (bookBtn && !card.classList.contains('disabled') && !bookBtn.hasAttribute('disabled')) {
                 bookBtn.addEventListener('click', (e) => {
                     e.stopPropagation(); // Avoid double click trigger
                     const id = card.getAttribute('data-court-id');
@@ -334,8 +334,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const formattedHoursLbl = `1 SÂN X ${selectedHours} GIỜ`;
         
         // Update Drawer elements
-        document.getElementById('summary-hours-label').textContent = formattedHoursLbl;
-        document.getElementById('summary-price-value').textContent = formattedCost;
+        const summaryHours = document.getElementById('summary-hours-label');
+        const summaryPrice = document.getElementById('summary-price-value');
+        if (summaryHours && summaryPrice) {
+            summaryHours.textContent = formattedHoursLbl;
+            summaryPrice.textContent = formattedCost;
+        }
     }
 
 
@@ -420,6 +424,50 @@ document.addEventListener('DOMContentLoaded', () => {
                 upcomingList.insertBefore(newCard, upcomingList.firstChild);
             }
 
+            // Sync checkout to Admin Panel Bảng Điều Khiển
+            const adminRecentBookings = document.getElementById('admin-recent-bookings');
+            if (adminRecentBookings) {
+                const newRow = document.createElement('div');
+                newRow.className = 'booking-item-row';
+                newRow.innerHTML = `
+                    <div class="booking-desc-col">
+                        <h4>Nguyễn Văn Huy (Khách)</h4>
+                        <span>Sân ${selectedCourtId} &bull; ${activeSlots.length} Giờ &bull; ${formattedCost}</span>
+                    </div>
+                    <div class="booking-time-col">
+                        <span class="badge-paid">ĐÃ THANH TOÁN</span>
+                        <span class="time-ago">Vừa xong</span>
+                    </div>
+                `;
+                adminRecentBookings.insertBefore(newRow, adminRecentBookings.firstChild);
+            }
+
+            // Sync checkout to Admin Queue duyệt lịch
+            const adminBookingsQueue = document.getElementById('admin-bookings-queue');
+            if (adminBookingsQueue) {
+                const randNum = Math.floor(1000 + Math.random() * 9000);
+                const queueItem = document.createElement('div');
+                queueItem.className = 'queue-card';
+                queueItem.id = `qcard-${randNum}`;
+                queueItem.innerHTML = `
+                    <div class="queue-header">
+                        <span class="queue-time-lbl">Khung giờ: ${timeSpanText}</span>
+                        <span class="queue-date-lbl">${fullDateString}</span>
+                    </div>
+                    <div class="queue-body">
+                        <h4>Sân ${selectedCourtId} &bull; ${selectedCourtName}</h4>
+                        <p class="queue-client">Khách hàng: <strong>Nguyễn Văn Huy</strong></p>
+                        <span class="queue-payment paid">Đã thanh toán Online</span>
+                        <span class="queue-id">Mã đặt: #${randCode}</span>
+                    </div>
+                    <div class="queue-actions">
+                        <button class="btn-q-detail">Chi tiết</button>
+                        <button class="btn-q-checkin" data-id="qcard-${randNum}">Nhận sân</button>
+                    </div>
+                `;
+                adminBookingsQueue.insertBefore(queueItem, adminBookingsQueue.firstChild);
+            }
+
             // Display success modal
             document.getElementById('success-booking-code').textContent = randCode;
             successDialog.classList.add('open');
@@ -432,7 +480,8 @@ document.addEventListener('DOMContentLoaded', () => {
             // Navigate to Booking tab
             switchScreen('screen-bookings');
             // Scroll to top of listings
-            document.querySelector('#screen-bookings .screen-scrollable').scrollTop = 0;
+            const listScroller = document.querySelector('#screen-bookings .screen-scrollable');
+            if (listScroller) listScroller.scrollTop = 0;
         });
     }
 
@@ -460,6 +509,332 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Default calculations load
+
+    // ==========================================
+    // 8. Admin Panel Switcher & Layout Controls
+    // ==========================================
+    
+    // Platform mode switcher navigation
+    const modeTabs = document.querySelectorAll('.platform-switcher .switch-tab');
+    const clientWrapper = document.querySelector('.client-view-wrapper');
+    const adminWrapper = document.querySelector('.admin-view-wrapper');
+
+    const setAppMode = (mode) => {
+        modeTabs.forEach(tab => {
+            tab.classList.remove('active');
+            if (tab.getAttribute('data-mode') === mode) {
+                tab.classList.add('active');
+            }
+        });
+
+        if (mode === 'admin') {
+            clientWrapper.classList.remove('active');
+            adminWrapper.classList.add('active');
+            updateActiveCourtsCount(); // Refresh stats
+        } else {
+            adminWrapper.classList.remove('active');
+            clientWrapper.classList.add('active');
+        }
+    };
+
+    modeTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            setAppMode(tab.getAttribute('data-mode'));
+        });
+    });
+
+    // Profile screen switcher trigger link
+    const profileAdminTrigger = document.getElementById('profile-admin-trigger');
+    if (profileAdminTrigger) {
+        profileAdminTrigger.addEventListener('click', () => {
+            setAppMode('admin');
+        });
+    }
+
+    // Admin Sidebar & Mobile Panel Routing
+    const adminNavItems = document.querySelectorAll('.admin-nav-item');
+    const mobileNavBtns = document.querySelectorAll('.mobile-nav-btn');
+    const adminSubPanels = document.querySelectorAll('.admin-sub-panel');
+    const adminPanelTitle = document.getElementById('admin-panel-title');
+
+    const switchAdminPanel = (targetPanel) => {
+        // Sync Sidebar Items active class
+        adminNavItems.forEach(nav => {
+            nav.classList.remove('active');
+            if (nav.getAttribute('data-panel') === targetPanel) {
+                nav.classList.add('active');
+            }
+        });
+
+        // Sync Mobile Nav buttons active class
+        mobileNavBtns.forEach(btn => {
+            btn.classList.remove('active');
+            if (btn.getAttribute('data-panel') === targetPanel) {
+                btn.classList.add('active');
+            }
+        });
+
+        // Switch panel visibility
+        adminSubPanels.forEach(panel => panel.classList.remove('active'));
+        const activePanel = document.getElementById(targetPanel);
+        if (activePanel) activePanel.classList.add('active');
+
+        // Set Title text
+        if (targetPanel === 'panel-dashboard') {
+            if (adminPanelTitle) adminPanelTitle.textContent = 'Bảng Điều Khiển';
+        } else if (targetPanel === 'panel-courts') {
+            if (adminPanelTitle) adminPanelTitle.textContent = 'Quản Lý Sân & Lịch';
+        }
+    };
+
+    // Sidebar items click triggers
+    adminNavItems.forEach(item => {
+        item.addEventListener('click', () => {
+            switchAdminPanel(item.getAttribute('data-panel'));
+        });
+    });
+
+    // Mobile nav buttons click triggers
+    mobileNavBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            switchAdminPanel(btn.getAttribute('data-panel'));
+        });
+    });
+
+    // Admin check-in approval logic via delegation
+    const bookingsQueue = document.getElementById('admin-bookings-queue');
+    if (bookingsQueue) {
+        bookingsQueue.addEventListener('click', (e) => {
+            if (e.target.classList.contains('btn-q-checkin')) {
+                const targetId = e.target.getAttribute('data-id');
+                const card = document.getElementById(targetId);
+                if (card) {
+                    // Slide out animate and remove
+                    card.style.transition = 'all 0.4s ease';
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateX(50px)';
+                    setTimeout(() => {
+                        card.remove();
+                        showNotification('Khách hàng đã nhận sân thành công!', 'success');
+                    }, 400);
+                }
+            } else if (e.target.classList.contains('btn-q-detail')) {
+                showNotification('Đang mở chi tiết lịch đặt sân này...', 'info');
+            }
+        });
+    }
+
+    // Admin Court Maintenance Status Control
+    const maintenanceToggles = document.querySelectorAll('.m-toggle-chk');
+    
+    maintenanceToggles.forEach(toggle => {
+        toggle.addEventListener('change', () => {
+            const courtId = toggle.getAttribute('data-court');
+            const row = toggle.closest('.maintenance-item-row');
+            const badge = row.querySelector('.m-status-badge');
+            
+            if (toggle.checked) {
+                badge.textContent = 'Đang hoạt động';
+                badge.className = 'm-status-badge status-active';
+                setCourtDisabledState(courtId, false);
+                showNotification(`Sân số ${courtId} đã hoạt động bình thường trở lại.`, 'success');
+            } else {
+                badge.textContent = 'Bảo trì';
+                badge.className = 'm-status-badge status-maintenance';
+                setCourtDisabledState(courtId, true);
+                showNotification(`Sân số ${courtId} đã tạm dừng hoạt động để bảo trì.`, 'warning');
+            }
+            updateActiveCourtsCount();
+        });
+    });
+
+    function setCourtDisabledState(courtId, isDisabled) {
+        // Sync disabled state to Search result cards
+        const resultCard = document.querySelector(`.court-result-card[data-court-id="${courtId}"]`);
+        if (resultCard) {
+            const bookBtn = resultCard.querySelector('.btn-book-now');
+            if (isDisabled) {
+                resultCard.classList.add('disabled');
+                if (bookBtn) {
+                    bookBtn.textContent = 'Bảo trì';
+                    bookBtn.className = 'btn-book-now btn-disabled';
+                    bookBtn.setAttribute('disabled', 'true');
+                }
+            } else {
+                resultCard.classList.remove('disabled');
+                if (bookBtn) {
+                    bookBtn.textContent = 'Đặt ngay';
+                    bookBtn.className = 'btn-book-now';
+                    bookBtn.removeAttribute('disabled');
+                }
+            }
+        }
+        
+        // Sync disabled state to Home cards
+        const homeCard = document.querySelector(`.court-card[data-court-id="${courtId}"]`);
+        if (homeCard) {
+            const bookBtn = homeCard.querySelector('.btn-book-now');
+            if (isDisabled) {
+                homeCard.style.opacity = '0.6';
+                if (bookBtn) {
+                    bookBtn.textContent = 'Bảo trì';
+                    bookBtn.style.backgroundColor = '#9CA3AF';
+                    bookBtn.setAttribute('disabled', 'true');
+                }
+            } else {
+                homeCard.style.opacity = '1';
+                if (bookBtn) {
+                    bookBtn.textContent = 'Đặt ngay';
+                    bookBtn.style.backgroundColor = 'var(--primary-green)';
+                    bookBtn.removeAttribute('disabled');
+                }
+            }
+        }
+    }
+
+    function updateActiveCourtsCount() {
+        const total = maintenanceToggles.length;
+        let activeCount = 0;
+        maintenanceToggles.forEach(toggle => {
+            if (toggle.checked) activeCount++;
+        });
+        const countDisplay = document.getElementById('active-courts-count');
+        if (countDisplay) {
+            countDisplay.textContent = `${activeCount}/${total}`;
+        }
+    }
+
+    // Export CSV data file
+    const exportCsvBtn = document.getElementById('btn-export-csv');
+    if (exportCsvBtn) {
+        exportCsvBtn.addEventListener('click', () => {
+            const csvContent = "data:text/csv;charset=utf-8,"
+                + "Ngay,San,Khach Hang,Khung Gio,Doanh Thu\n"
+                + "22/06/2026,Championship Court,Johnathan Doe,18:00 - 20:00,400000\n"
+                + "23/06/2026,Sân Cầu Lông Đa Năng,Sophia Martinez,09:00 - 10:00,180000\n"
+                + "25/06/2026,Pro Court Tennis Hub,Michael Zhao,07:00 - 09:00,440000\n"
+                + "26/06/2026,Pickleball Central District,Sarah Jenkins,20:00 - 21:00,200000\n";
+            
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", "doanh_thu_kinetic_court.csv");
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
+            showNotification('Đang xuất tệp báo cáo doanh thu CSV...', 'success');
+        });
+    }
+
+    // Lock quick schedule trigger
+    const quickLockBtn = document.getElementById('btn-quick-lock');
+    if (quickLockBtn) {
+        quickLockBtn.addEventListener('click', () => {
+            showNotification('Đã khoá lịch hoạt động hôm nay để tiến hành bảo trì nhanh.', 'info');
+        });
+    }
+
+
+    // ==========================================
+    // 9. Premium Custom Notification Toast
+    // ==========================================
+    function showNotification(message, type = 'info') {
+        const oldToast = document.querySelector('.toast-notification');
+        if (oldToast) {
+            oldToast.remove();
+        }
+
+        const toast = document.createElement('div');
+        toast.className = `toast-notification toast-${type}`;
+        
+        let iconHtml = '<i class="fa-solid fa-circle-info"></i>';
+        if (type === 'success') {
+            iconHtml = '<i class="fa-solid fa-circle-check"></i>';
+        } else if (type === 'warning') {
+            iconHtml = '<i class="fa-solid fa-triangle-exclamation"></i>';
+        }
+        
+        toast.innerHTML = `
+            <div class="toast-content">
+                <span class="toast-icon">${iconHtml}</span>
+                <span class="toast-message">${message}</span>
+            </div>
+            <button class="toast-close">&times;</button>
+        `;
+
+        document.body.appendChild(toast);
+
+        Object.assign(toast.style, {
+            position: 'fixed',
+            bottom: '30px',
+            right: '30px',
+            backgroundColor: '#1E293B',
+            color: '#FFFFFF',
+            borderLeft: '4px solid #C5A880',
+            borderRadius: '8px',
+            boxShadow: '0 10px 25px rgba(0, 0, 0, 0.3)',
+            padding: '16px 20px',
+            zIndex: '9999',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            gap: '15px',
+            maxWidth: '380px',
+            animation: 'slideIn 0.3s ease forwards',
+            fontFamily: "'Be Vietnam Pro', sans-serif",
+            fontSize: '0.9rem',
+            border: '1px solid #334155',
+            borderLeftWidth: '4px'
+        });
+
+        if (type === 'success') {
+            toast.style.borderLeftColor = '#22C55E';
+        } else if (type === 'warning') {
+            toast.style.borderLeftColor = '#EF4444';
+        } else if (type === 'info') {
+            toast.style.borderLeftColor = '#0284C7';
+        }
+
+        const closeBtn = toast.querySelector('.toast-close');
+        Object.assign(closeBtn.style, {
+            background: 'transparent',
+            border: 'none',
+            fontSize: '1.2rem',
+            cursor: 'pointer',
+            opacity: '0.5',
+            transition: 'opacity 0.2s',
+            color: '#FFFFFF'
+        });
+        
+        closeBtn.addEventListener('click', () => {
+            toast.remove();
+        });
+
+        setTimeout(() => {
+            if (document.body.contains(toast)) {
+                toast.style.animation = 'slideOut 0.3s ease forwards';
+                setTimeout(() => {
+                    if (document.body.contains(toast)) toast.remove();
+                }, 300);
+            }
+        }, 5000);
+    }
+    
+    // Inject animation keyframes for toast dynamically
+    const styleSheet = document.createElement("style");
+    styleSheet.innerText = `
+        @keyframes slideIn {
+            from { transform: translateX(120%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes slideOut {
+            from { transform: translateX(0); opacity: 1; }
+            to { transform: translateX(120%); opacity: 0; }
+        }
+    `;
+    document.head.appendChild(styleSheet);
+
+    // Initial calculations load
     updateCalculatedPrice();
+    registerCourtClickListeners();
 });
