@@ -2586,4 +2586,240 @@ body {
     }
 }
 
+/* ==========================================================================
+   Admin Dashboard Light Mode Overrides
+   ========================================================================== */
+.admin-dashboard-container {
+    background-color: #F1F5F9 !important;
+    color: #1E293B !important;
+}
+
+.admin-sidebar {
+    background-color: #FFFFFF !important;
+    border-right: 1px solid #E2E8F0 !important;
+}
+
+.admin-brand h2 {
+    color: #0F172A !important;
+}
+
+.admin-nav-item {
+    color: #64748B !important;
+}
+
+.admin-nav-item:hover {
+    color: #0F172A !important;
+    background-color: #F8FAFC !important;
+}
+
+.admin-nav-item.active {
+    color: #15803D !important;
+    background-color: #F0FDF4 !important;
+}
+
+.admin-sidebar-footer {
+    border-top: 1px solid #E2E8F0 !important;
+}
+
+.admin-user-info h4 {
+    color: #0F172A !important;
+}
+
+.admin-user-info span {
+    color: #64748B !important;
+}
+
+.admin-viewport {
+    background-color: #F8FAFC !important;
+}
+
+.admin-header {
+    border-bottom: 1px solid #E2E8F0 !important;
+}
+
+.admin-header h2 {
+    color: #0F172A !important;
+}
+
+.admin-action-btn {
+    background-color: #FFFFFF !important;
+    border: 1px solid #E2E8F0 !important;
+    color: #0F172A !important;
+}
+
+.admin-action-btn:hover {
+    background-color: #F1F5F9 !important;
+    border-color: #CBD5E1 !important;
+}
+
+#btn-export-csv {
+    background-color: var(--primary-green) !important;
+    color: #0F172A !important;
+    border-color: var(--primary-green) !important;
+}
+
+#btn-export-csv:hover {
+    background-color: var(--primary-green-hover) !important;
+    color: #FFFFFF !important;
+}
+
+.stat-widget {
+    background-color: #FFFFFF !important;
+    border: 1px solid #E2E8F0 !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03) !important;
+}
+
+.widget-header {
+    color: #64748B !important;
+}
+
+.widget-value {
+    color: #0F172A !important;
+}
+
+.widget-desc {
+    color: #64748B !important;
+}
+
+.widget-icon {
+    color: rgba(15, 23, 42, 0.04) !important;
+}
+
+.widget-progress-track {
+    background-color: #E2E8F0 !important;
+}
+
+.chart-col {
+    background-color: #E2E8F0 !important;
+}
+
+.dashboard-card {
+    background-color: #FFFFFF !important;
+    border: 1px solid #E2E8F0 !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03) !important;
+}
+
+.card-header h3 {
+    color: #0F172A !important;
+}
+
+.timeline-content {
+    background-color: #F8FAFC !important;
+    border: 1px solid #E2E8F0 !important;
+}
+
+.timeline-header h4 {
+    color: #0F172A !important;
+}
+
+.timeline-content p {
+    color: #64748B !important;
+}
+
+.timeline-item.locked .timeline-content {
+    border-color: rgba(239, 68, 68, 0.2) !important;
+    background-color: rgba(239, 68, 68, 0.02) !important;
+}
+
+.booking-item-row {
+    background-color: #F8FAFC !important;
+    border: 1px solid #E2E8F0 !important;
+}
+
+.booking-desc-col h4 {
+    color: #0F172A !important;
+}
+
+.booking-desc-col span {
+    color: #64748B !important;
+}
+
+.queue-card {
+    background-color: #FFFFFF !important;
+    border: 1px solid #E2E8F0 !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03) !important;
+}
+
+.queue-header {
+    border-bottom: 1px solid #E2E8F0 !important;
+}
+
+.queue-body h4 {
+    color: #0F172A !important;
+}
+
+.queue-client strong {
+    color: #0F172A !important;
+}
+
+.queue-client,
+.queue-payment,
+.queue-id {
+    color: #64748B !important;
+}
+
+.btn-q-detail {
+    border: 1px solid #D1D5DB !important;
+    color: #374151 !important;
+}
+
+.btn-q-detail:hover {
+    background-color: #F3F4F6 !important;
+}
+
+.maintenance-item-row {
+    background-color: #F8FAFC !important;
+    border: 1px solid #E2E8F0 !important;
+}
+
+.m-info h4 {
+    color: #0F172A !important;
+}
+
+.m-type {
+    color: #64748B !important;
+}
+
+.switch-toggle .slider-toggle-btn {
+    background-color: #CBD5E1 !important;
+}
+
+.switch-toggle input:checked + .slider-toggle-btn {
+    background-color: var(--primary-green) !important;
+}
+
+.leaderboard-row {
+    background-color: #F8FAFC !important;
+    border: 1px solid #E2E8F0 !important;
+}
+
+.l-name-block h4 {
+    color: #0F172A !important;
+}
+
+.l-name-block span {
+    color: #64748B !important;
+}
+
+.rev-val {
+    color: #0F172A !important;
+}
+
+.admin-mobile-nav {
+    background-color: #FFFFFF !important;
+    border: 1px solid #E2E8F0 !important;
+}
+
+.mobile-nav-btn {
+    background-color: #F1F5F9 !important;
+    border: 1px solid #E2E8F0 !important;
+    color: #64748B !important;
+}
+
+.mobile-nav-btn.active {
+    background-color: var(--primary-green) !important;
+    color: #0F172A !important;
+    border-color: var(--primary-green) !important;
+}
+
 
