@@ -4,6 +4,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   
   app: {
+    baseURL: '/booking-sport-ui/',
     head: {
       title: 'Kinetic Court | Ứng Dụng Đặt Sân Thể Thao',
       meta: [
